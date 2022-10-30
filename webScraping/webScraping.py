@@ -34,24 +34,25 @@ for j in ProductHref:
 #for k in ProductPrice:
     #ProductPriceList.append(ProductPrice.text)
 
-
+'''
 print(ProductDetails)
 print(ProductDetail)
 print(ProductDetailsHref)
+'''
 
+result = list(map(lambda a, b, c: [a, b, c], ProductDetails, ProductDetail, ProductDetailsHref))
+print(result)
 
-myFile = open('AmazonWebScraping.csv', 'w')
+Title = [['Product Name'], ['Rating'], ['Link']]
+
+myFile = open('AmazonWebScraping.csv', 'w', newline='')
 writer = csv.writer(myFile)
-writer.writerow([' Product Name'])
-writer.writerow(ProductDetails)
-writer.writerow(['Product rating'])
-writer.writerow([ProductDetail])
-writer.writerow(['Product Link'])
-writer.writerow(ProductDetailsHref)
+writer.writerow(Title)
+writer.writerows(result)
+
 myFile.close()
 myFile = open('AmazonWebScraping.csv', 'r')
 print("The content of the csv file is:")
 print(myFile.read())
 myFile.close()
-
 
